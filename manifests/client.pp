@@ -51,6 +51,7 @@ class rsyslog::client (
   $ssl_auth_mode             = 'x509/name',
   $ssl_key                   = undef,
   $ssl_cert                  = undef,
+  $preserve_fqdn             = false,
   $log_templates             = false,
   $actionfiletemplate        = false,
   $high_precision_timestamps = false,

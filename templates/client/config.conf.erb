@@ -30,6 +30,12 @@ $ActionFileDefaultTemplate RSYSLOG_FileFormat
 <% end -%>
 <% end -%>
 
+# Preserve domain suffix in syslog hostname
+# PS! Does not work with rsyslog 5 (bug, not a feature)
+<% if scope.lookupvar('rsyslog::client::preserve_fqdn') -%>
+$PreserveFQDN on
+<% end %>
+
 <% if scope.lookupvar('rsyslog::client::rate_limit_burst') and scope.lookupvar('rsyslog::client::rate_limit_burst') != :undef -%>
 $SystemLogRateLimitBurst <%= scope.lookupvar('rsyslog::client::rate_limit_burst') %>
 <% end -%>
