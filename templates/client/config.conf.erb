@@ -48,6 +48,8 @@ $UDPServerRun 514
 # Setup SSL connection.
 # CA/Cert
 $DefaultNetStreamDriverCAFile <%= scope.lookupvar('rsyslog::client::ssl_ca') %>
+$DefaultNetstreamDriverCertFile <%= scope.lookupvar('rsyslog::client::ssl_cert') %>
+$DefaultNetstreamDriverKeyFile <%= scope.lookupvar('rsyslog::client::ssl_key') %>
 
 # Connection settings.
 $DefaultNetstreamDriver gtls
