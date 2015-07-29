@@ -46,6 +46,7 @@ class rsyslog::client (
   $server                    = 'log',
   $port                      = '514',
   $remote_servers            = false,
+  $ssl                       = true,
   $ssl_ca                    = undef,
   $ssl_permitted_peer        = undef,
   $ssl_auth_mode             = 'x509/name',
@@ -105,23 +106,23 @@ class rsyslog::client (
     }
   }
 
-  if $rsyslog::ssl and $ssl_ca == undef {
+  if $ssl == true and $ssl_ca == undef {
     fail('You need to define $ssl_ca in order to use SSL.')
   }
 
-  if $rsyslog::ssl and $remote_type != 'tcp' {
+  if $ssl == true and $remote_type != 'tcp' {
     fail('You need to enable tcp in order to use SSL.')
   }
 
-  if $rsyslog::ssl and $ssl_key == undef {
+  if $ssl == true and $ssl_key == undef {
     fail('You need to define $ssl_key in order to use SSL.')
   }
 
-  if $rsyslog::ssl and $ssl_cert == undef {
+  if $ssl == true and $ssl_cert == undef {
     fail('You need to define $ssl_cert in order to use SSL.')
   }
 
-  if $ssl_auth_mode != 'anon' and $rsyslog::ssl == false {
+  if $ssl_auth_mode != 'anon' and $ssl == false {
     fail("You need to enable SSL in order to use ssl_auth_mode.")
   }
 
