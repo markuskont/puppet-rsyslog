@@ -30,9 +30,9 @@ $ActionFileDefaultTemplate RSYSLOG_FileFormat
 <% end -%>
 <% end -%>
 
+<% if scope.lookupvar('rsyslog::client::preserve_fqdn') -%>
 # Preserve domain suffix in syslog hostname
 # PS! Does not work with rsyslog 5 (bug, not a feature)
-<% if scope.lookupvar('rsyslog::client::preserve_fqdn') -%>
 $PreserveFQDN on
 <% end %>
 
