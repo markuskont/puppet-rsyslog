@@ -42,10 +42,6 @@ news.notice                     -/var/log/news/news.notice
 *.=debug;\
        auth,authpriv.none;\
        news.none;mail.none     -/var/log/debug
-*.=info;*.=notice;*.=warn;\
-       auth,authpriv.none;\
-       cron,daemon.none;\
-       mail,news.none          -/var/log/messages
 
 #
 # I like to have messages displayed on the console, but only on a virtual
